@@ -5,3 +5,8 @@ WHERE table_name = 'ORDERS' AND constraint_type = 'P';
 
 -- 2. Перестраиваем его в REVERSE (замени SYS_C... на имя из первого запроса)
 ALTER INDEX имя_твоего_индекса REBUILD REVERSE;
+
+-- Создаем индекс для аналитики, но делаем его невидимым
+CREATE INDEX idx_orders_customer_status 
+ON orders(customer_id, status) INVISIBLE;
+
